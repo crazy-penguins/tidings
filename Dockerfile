@@ -1,13 +1,10 @@
-FROM ubuntu:bionic
+FROM centos:7
 WORKDIR /app
-RUN apt-get -qq update \
-  && apt-get -qq install bzip2 python2.7 nodejs npm sudo git \
+RUN yum -y -q install epel-release https://centos7.iuscommunity.org/ius-release.rpm \
+  && yum -qq install bzip2 nodejs npm sudo git2u \
   && npm i -g -q @bigcommerce/stencil-cli \
-  && useradd nodejs \
+  && adduser nodejs \
   && mkdir -p /etc/sudoers.d \
   && echo "nodejs   ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/10-nodejs \
   && chown nodejs:nodejs /app
 USER nodejs
-RUN sudo mkdir -p /home/nodejs \
-  && sudo chown -R nodejs:nodejs /home/nodejs
-
