@@ -1,7 +1,7 @@
 FROM centos:7
 WORKDIR /app
 RUN yum -y -q install epel-release https://centos7.iuscommunity.org/ius-release.rpm \
-  && yum -qq install bzip2 nodejs npm sudo git2u \
+  && yum -q -y install bzip2 nodejs npm sudo git2u \
   && npm i -g -q @bigcommerce/stencil-cli \
   && adduser nodejs \
   && mkdir -p /etc/sudoers.d \
