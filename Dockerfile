@@ -17,4 +17,3 @@ USER root
 RUN chown -R root:root /usr/lib/node_modules \
   && chown root:root /usr/bin \
   && rm /app/nodesource_setup.sh
-USER nodejs
