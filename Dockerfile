@@ -16,4 +16,5 @@ RUN npm i -g -q @bigcommerce/stencil-cli 2>&1 | grep -v WARN
 USER root
 RUN chown -R root:root /usr/lib/node_modules \
   && chown root:root /usr/bin \
-  && rm /app/nodesource_setup.sh
+  && rm /app/nodesource_setup.sh \
+  && pip install --no-cache-dir -U pip awscli jinja2 pyyaml waddle
