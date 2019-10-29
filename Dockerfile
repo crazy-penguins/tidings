@@ -11,11 +11,15 @@ RUN apt-get -qq update \
   && apt-get -qq install nodejs npm \
   && mkdir -p /usr/lib/node_modules \
   && chown -R nodejs:nodejs /usr/lib/node_modules \
-  && chown nodejs:nodejs /usr/bin
+  && chown nodejs:nodejs /usr/bin \
+  && chown nodejs:nodejs /usr/local/lib \
+  && chown nodejs:nodejs /usr/local/bin
 USER nodejs
-RUN npm i -g -q @bigcommerce/stencil-cli 2>&1 | grep -v WARN
+RUN npm i -g -q @bigcommerce/stencil-cli
 USER root
 RUN chown -R root:root /usr/lib/node_modules \
   && chown root:root /usr/bin \
+  && chown root:root /usr/local/lib \
+  && chown root:root /usr/local/bin \
   && rm /app/nodesource_setup.sh \
   && pip install --no-cache-dir -U pip awscli jinja2 pyyaml waddle
