@@ -9,6 +9,7 @@ RUN apt-get -qq update \
   && chmod a+x nodesource_setup.sh \
   && ./nodesource_setup.sh \
   && apt-get -qq install nodejs \
+  && mkdir -p /usr/lib/node_modules \
   && chown -R nodejs:nodejs /usr/lib/node_modules \
   && chown nodejs:nodejs /usr/bin
 USER nodejs
