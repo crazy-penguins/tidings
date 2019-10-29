@@ -8,7 +8,7 @@ RUN apt-get -qq update \
   && curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh \
   && chmod a+x nodesource_setup.sh \
   && ./nodesource_setup.sh \
-  && apt-get -qq install nodejs \
+  && apt-get -qq install nodejs npm \
   && mkdir -p /usr/lib/node_modules \
   && chown -R nodejs:nodejs /usr/lib/node_modules \
   && chown nodejs:nodejs /usr/bin
